@@ -1,0 +1,65 @@
+{
+  "name": "wechat-lufthansa-cny",
+  "version": "0.0.1",
+  "description": "wechat lufthansa cny",
+  "main": "index.js",
+  "scripts": {
+    "run-local": "node node_modules/webpack-dev-server/bin/webpack-dev-server.js --env=local --open --profile",
+    "build-dev": "webpack --env=dev --progress --profile",
+    "build-prod": "webpack --env=prod --progress --profile",
+    "debug-build-dev": "node %NODE_DEBUG_OPTION% node_modules/webpack/bin/webpack.js --env=local --open --progress",
+    "debug-run-local": "node %NODE_DEBUG_OPTION% node_modules/webpack-dev-server/bin/webpack-dev-server.js --env=local --open --progress",
+    "eslint": "eslint --ext .js --fix src",
+    "stylelint": "stylelint ./src/**/*.scss"
+  },
+  "author": "MLP-CD",
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/core": "7.1.6",
+    "@babel/plugin-transform-object-assign": "7.2.0",
+    "@babel/preset-env": "7.1.6",
+    "babel-eslint": "10.0.1",
+    "babel-loader": "8.0.4",
+    "clean-webpack-plugin": "0.1.16",
+    "copy-webpack-plugin": "4.5.1",
+    "css-loader": "0.28.4",
+    "eslint": "4.19.1",
+    "eslint-config-airbnb": "16.1.0",
+    "eslint-plugin-import": "2.12.0",
+    "extract-text-webpack-plugin": "4.0.0-beta.0",
+    "file-loader": "1.1.11",
+    "html-webpack-plugin": "3.2.0",
+    "node-sass": "4.5.3",
+    "postcss-cssnext": "3.1.0",
+    "postcss-loader": "2.0.5",
+    "pre-commit": "1.2.2",
+    "pug": "2.0.3",
+    "pug-loader": "2.4.0",
+    "raw-loader": "0.5.1",
+    "resolve-url-loader": "2.3.0",
+    "sass-loader": "7.0.1",
+    "style-resources-loader": "1.2.1",
+    "stylelint": "9.2.1",
+    "stylelint-scss": "3.1.0",
+    "url-loader": "1.0.1",
+    "vue-loader": "15.2.4",
+    "vue-template-compiler": "2.5.16",
+    "webpack": "4.10.2",
+    "webpack-cli": "2.1.4",
+    "webpack-dev-server": "3.1.4",
+    "webpack-merge": "4.1.0"
+  },
+  "dependencies": {
+    "jquery": "3.3.1",
+    "resource-loader": "2.2.0",
+    "vue": "2.5.16",
+    "vue-router": "3.0.2"
+  },
+  "browserslist": [
+    "IE 10"
+  ],
+  "pre-commit": [
+    "eslint",
+    "stylelint"
+  ]
+}

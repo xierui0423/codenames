@@ -1,0 +1,14 @@
+{
+  "presets": [
+    // webpack understands the native import syntax, and uses it for tree shaking
+    [
+      "@babel/preset-env",
+      {
+        "modules": false,
+        "useBuiltIns": "entry"
+      }
+    ]
+  ],
+
+  "plugins": ["@babel/plugin-transform-object-assign"]
+}
