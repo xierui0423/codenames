@@ -1,11 +1,11 @@
 
 <template>
   <div class="board">
-    <div class="red-score" :class="{active: this.activeRed && !win, win: this.win === 'red'}">
+    <div class="red-score" @click="pass" :class="{active: this.activeRed && !win, win: this.win === 'red'}">
       <div v-show="win === 'red'">红方探员集合完毕，任务成功！<br><br><br><router-link to="landing">重新开始</router-link></div>
       <div v-show="!win">未识别探员 {{redLeft}}</div>
     </div>
-    <div class="blue-score" :class="{active: !this.activeRed && !win, win: this.win === 'blue'}">
+    <div class="blue-score" @click="pass" :class="{active: !this.activeRed && !win, win: this.win === 'blue'}">
       <div v-show="win === 'blue'">蓝方探员集合完毕，任务成功！<br><br><br><router-link to="landing">重新开始</router-link></div>
       <div v-show="!win">未识别探员 {{blueLeft}}</div>
     </div>
@@ -52,7 +52,7 @@ export default {
             if (this.redLeft === 0) {
               this.win = "red";
             }
-             if (!this.activeRed) {
+            if (!this.activeRed) {
               this.activeRed = true;
             }
             break;
@@ -78,6 +78,10 @@ export default {
         }
         this.$forceUpdate();
       }
+    },
+
+    pass(){
+      this.activeRed = !this.activeRed;
     }
   },
 

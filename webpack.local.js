@@ -12,7 +12,7 @@ module.exports = function (env, compileEntries) {
       // match the output 'publicPath'
       publicPath: '/',
 
-      host: '10.148.61.110',
+      // host: '10.148.61.110',
     },
 
     performance: {
