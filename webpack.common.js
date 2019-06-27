@@ -42,121 +42,121 @@ module.exports = (env, compilePages) => {
 
     module: {
       rules: [{
-          test: /\.jsx?$/,
-          include: [path.resolve(__dirname, 'src')],
+        test: /\.jsx?$/,
+        include: [path.resolve(__dirname, 'src')],
 
-          loader: ['babel-loader'],
-        },
-        {
-          test: /\.scss$/,
-          include: [path.resolve(__dirname, 'src')],
+        loader: ['babel-loader'],
+      },
+      {
+        test: /\.scss$/,
+        include: [path.resolve(__dirname, 'src')],
 
-          // Note the order of loader applied is opposite with the order within the loaders array
-          loader: ExtractTextPlugin.extract([{
-              loader: 'css-loader',
-              options: {
-                sourceMap: true,
-                modules: false,
-                url: true,
-              },
-            },
-            {
-              loader: 'postcss-loader',
-              options: {
-                plugins: () => [CssNextPlugin],
-                sourceMap: true
-              },
-            },
-            {
-              loader: 'sass-loader',
-              options: {
-                sourceMap: true,
-              },
-            }, {
-              loader: 'style-resources-loader',
-              options: {
-                patterns: [
-                  './src/shared/css/variables.scss', './src/shared/css/mixins.scss',
-                ],
-              },
-            },
-          ]),
+        // Note the order of loader applied is opposite with the order within the loaders array
+        loader: ExtractTextPlugin.extract([{
+          loader: 'css-loader',
+          options: {
+            sourceMap: true,
+            modules: false,
+            url: true,
+          },
         },
         {
-          test: /\.css$/,
-          include: [path.resolve(__dirname, 'src')],
+          loader: 'postcss-loader',
+          options: {
+            plugins: () => [CssNextPlugin],
+            sourceMap: true,
+          },
+        },
+        {
+          loader: 'sass-loader',
+          options: {
+            sourceMap: true,
+          },
+        }, {
+          loader: 'style-resources-loader',
+          options: {
+            patterns: [
+              './src/shared/css/variables.scss', './src/shared/css/mixins.scss',
+            ],
+          },
+        },
+        ]),
+      },
+      {
+        test: /\.css$/,
+        include: [path.resolve(__dirname, 'src')],
 
-          // Note the order of loader applied is opposite with the order within the loaders array
-          loader: ExtractTextPlugin.extract([
-            'css-loader',
-          ]),
-        },
-        {
-          test: /\.(png|svg|jpg|gif)$/,
-          include: [path.resolve(__dirname, 'src'), path.resolve(__dirname, root), path.resolve(__dirname, 'node_modules')],
-          loader: [{
-            loader: 'file-loader',
-            options: {
-              name: '[name].[ext]',
-              outputPath: 'images',
-              publicPath: `${publicPath}images`,
+        // Note the order of loader applied is opposite with the order within the loaders array
+        loader: ExtractTextPlugin.extract([
+          'css-loader',
+        ]),
+      },
+      {
+        test: /\.(png|svg|jpg|gif)$/,
+        include: [path.resolve(__dirname, 'src'), path.resolve(__dirname, root), path.resolve(__dirname, 'node_modules')],
+        loader: [{
+          loader: 'file-loader',
+          options: {
+            name: '[name].[ext]',
+            outputPath: 'images',
+            publicPath: `${publicPath}images`,
+          },
+        }],
+      },
+      {
+        test: /\.(wav|mp3|Ogg)$/,
+        include: [path.resolve(__dirname, 'src'), path.resolve(__dirname, root), path.resolve(__dirname, 'node_modules')],
+        loader: [{
+          loader: 'file-loader',
+          options: {
+            name: '[name].[ext]',
+            outputPath: 'audio',
+            publicPath: `${publicPath}audio`,
+          },
+        }],
+      },
+      {
+        test: /\.pug$/,
+        include: [path.resolve(__dirname, 'src')],
+        loader: [{
+          loader: 'pug-loader',
+          options: {
+            pretty: true,
+          },
+        }],
+      },
+      {
+        test: /\.vue$/,
+        include: [path.resolve(__dirname, 'src')],
+        loader: [{
+          loader: 'vue-loader',
+          options: {
+            transformAssetUrls: {
+              video: [],
+              source: '',
+              img: '',
+              image: [],
             },
-          }],
-        },
-        {
-          test: /\.(wav|mp3|Ogg)$/,
-          include: [path.resolve(__dirname, 'src'), path.resolve(__dirname, root), path.resolve(__dirname, 'node_modules')],
-          loader: [{
-            loader: 'file-loader',
-            options: {
-              name: '[name].[ext]',
-              outputPath: 'audio',
-              publicPath: `${publicPath}audio`,
-            },
-          }],
-        },
-        {
-          test: /\.pug$/,
-          include: [path.resolve(__dirname, 'src')],
-          loader: [{
-            loader: 'pug-loader',
-            options: {
-              pretty: true,
-            },
-          }],
-        },
-        {
-          test: /\.vue$/,
-          include: [path.resolve(__dirname, 'src')],
-          loader: [{
-            loader: 'vue-loader',
-            options: {
-              transformAssetUrls: {
-                video: [],
-                source: '',
-                img: '',
-                image: [],
+            loaders: {
+              js: {
+                loader: 'babel-loader',
               },
-              loaders: {
-                js: {
-                  loader: 'babel-loader',
-                },
-              },
             },
-          }],
-        },
-        {
-          test: /\.(woff|woff2|eot|ttf|otf)(\?[a-z0-9]+)?$/,
-          include: [path.resolve(__dirname, 'src'), path.resolve(__dirname, 'node_modules')],
-          loader: [{
-            loader: 'file-loader',
-            options: {
-              name: '[name].[ext]',
-              outputPath: 'fonts',
-              publicPath: `${publicPath}fonts`,
-            },
-          }],
-        }
+          },
+        }],
+      },
+      {
+        test: /\.(woff|woff2|eot|ttf|otf)(\?[a-z0-9]+)?$/,
+        include: [path.resolve(__dirname, 'src'), path.resolve(__dirname, 'node_modules')],
+        loader: [{
+          loader: 'file-loader',
+          options: {
+            name: '[name].[ext]',
+            outputPath: 'fonts',
+            publicPath: `${publicPath}fonts`,
+          },
+        }],
+      },
       ],
     },
 
@@ -171,7 +171,7 @@ module.exports = (env, compilePages) => {
       // Make css bundle
       new ExtractTextPlugin({
         filename: 'style/[name].css',
-        allChunks: true
+        allChunks: true,
       }),
 
       new webpack.ProvidePlugin({
@@ -179,20 +179,20 @@ module.exports = (env, compilePages) => {
       }),
 
       new CopyWebpackPlugin([{
-          from: './src/assets/images/**/*',
-          to: 'images',
-          flatten: true
-        },
-        {
-          from: './src/assets/audio/**/*',
-          to: 'audio',
-          flatten: true
-        },
-        {
-          from: './src/assets/html/**/*',
-          to: 'static',
-          flatten: true
-        },
+        from: './src/assets/images/**/*',
+        to: 'images',
+        flatten: true,
+      },
+      {
+        from: './src/assets/audio/**/*',
+        to: 'audio',
+        flatten: true,
+      },
+      {
+        from: './src/assets/html/**/*',
+        to: 'static',
+        flatten: true,
+      },
       ]),
 
       new VueLoaderPlugin(),
@@ -202,7 +202,7 @@ module.exports = (env, compilePages) => {
   const localOnlyEntries = [
     // bundle the client for webpack-dev-server
     // and connect to the provided endpoint
-    'webpack-dev-server/client?http://localhost:8080'
+    'webpack-dev-server/client?http://localhost:8080',
   ];
 
   config.entry.main = [

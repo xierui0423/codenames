@@ -9,6 +9,10 @@ export default [{
   component: main,
   children: [
     {
+      path: '/',
+      component: landing,
+    },
+    {
       path: 'landing',
       component: landing,
     },

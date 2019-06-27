@@ -51,6 +51,7 @@
   },
   "dependencies": {
     "jquery": "3.3.1",
+    "js-base64": "2.5.1",
     "resource-loader": "2.2.0",
     "vue": "2.5.16",
     "vue-router": "3.0.2"

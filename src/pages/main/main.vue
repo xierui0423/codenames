@@ -1,8 +1,6 @@
 <template>
   <main class="main-container">
-    <keep-alive>
-      <router-view :letter="letter"></router-view>
-    </keep-alive>
+    <router-view></router-view>
   </main>
 </template>
 
@@ -12,8 +10,6 @@ export default {
 
   data() {
     return {
-      letter: window.letter,
-      answer: null
     };
   },
 
@@ -26,7 +22,7 @@ export default {
 },
 
   mounted() {
-   this.$router.replace('landing');
+  //  this.$router.replace('landing');
   }
 };
 </script>

@@ -1,5 +1,26 @@
 window.Util = {};
 
+window.Util.shuffle = (a) => {
+  const array = JSON.parse(JSON.stringify(a));
+  let currentIndex = array.length;
+  let temporaryValue;
+  let randomIndex;
+
+  // While there remain elements to shuffle...
+  while (currentIndex !== 0) {
+    // Pick a remaining element...
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex -= 1;
+
+    // And swap it with the current element.
+    temporaryValue = array[currentIndex];
+    array[currentIndex] = array[randomIndex];
+    array[randomIndex] = temporaryValue;
+  }
+
+  return array;
+};
+
 window.Util.debounce = (callback, interval) => {
   let debounceTimeout = null;
   return () => {
@@ -111,7 +132,7 @@ window.Util.dispatchEvent = (el, eventName, customData) => {
 window.Util.getUrlParameter = (paramName, noDecode) => {
   const sPageURL =
     noDecode ? window.location.search.substring(1) :
-    decodeURIComponent(window.location.search.substring(1));
+      decodeURIComponent(window.location.search.substring(1));
   let sParameterName;
   let i;
   const sURLVariables = sPageURL.split('&');
